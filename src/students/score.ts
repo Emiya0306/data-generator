@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
-import { dataType, zhCharset } from "../configs";
-import { getInt, getText } from "../mock";
+import { dataType, zhCharset } from '../configs';
+import { getInt, getText } from '../utils';
 
 const { DATE, INT, VARCHAR } = dataType;
 
@@ -57,7 +57,7 @@ interface Student {
   country: string;
   city: string;
   street: string;
-};
+}
 
 export function generateScore(recordCount = 200) {
   let data = '';
@@ -77,7 +77,7 @@ export function generateScore(recordCount = 200) {
     { name: 'Desc', type: VARCHAR },
   ];
 
-  data += headers.map(header => header.name).join(',');
+  data += headers.map((header) => header.name).join(',');
   data += '\r\n';
 
   const schools = ['小学', '初中', '高中'];
@@ -110,7 +110,7 @@ export function generateScore(recordCount = 200) {
     ],
     [
       ['伦敦街1号', '伦敦街2号', '伦敦街3号', '伦敦街4号'],
-    ]
+    ],
   ];
   const students: Student[] = [];
   for (let i = 0; i < recordCount; i += 1) {
@@ -148,9 +148,9 @@ export function generateScore(recordCount = 200) {
         student.country,
         student.city,
         student.street,
-        getInt(0, 100),
-        getInt(0, 100),
-        getInt(0, 100),
+        getInt({ min: 0, max: 100 }),
+        getInt({ min: 0, max: 100 }),
+        getInt({ min: 0, max: 100 }),
         dayjs(date).format('YYYY-MM-DD'),
         getText(10),
       ].join(',');
@@ -162,9 +162,9 @@ export function generateScore(recordCount = 200) {
   //   const record = [
   //     student.name,
   //     student.class,
-  //     getInt(0, 100),
-  //     getInt(0, 100),
-  //     getInt(0, 100),
+  //     getInt({min: 0, max: 100}),
+  //     getInt({min: 0, max: 100}),
+  //     getInt({min: 0, max: 100}),
   //     getText(10),
   //   ].join(',');
   //   data += `${record}\r\n`;

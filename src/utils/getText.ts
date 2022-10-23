@@ -1,4 +1,4 @@
-import { enCharset } from './configs';
+import { enCharset } from '../configs';
 
 export function getText(length = 10, charset = enCharset) {
   let text = '';
@@ -7,8 +7,4 @@ export function getText(length = 10, charset = enCharset) {
     text += charset[charAt];
   }
   return text;
-}
-
-export function getInt(min = 0, max = 65536) {
-  return Math.round(min + Math.random() * (max - min));
 }
