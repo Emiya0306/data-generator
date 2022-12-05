@@ -1,0 +1,1 @@
+export { generateDemo } from './score';
