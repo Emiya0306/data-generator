@@ -1,4 +1,5 @@
 export { getInt } from './getInt';
+export { getDouble } from './getDouble';
 export { getText } from './getText';
 export { getHierarchies } from './getHierarchies';
 export type { Hierarchy } from './getHierarchies';

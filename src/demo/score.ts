@@ -1,5 +1,5 @@
 import { dataType } from '../configs';
-import { getInt } from '../utils';
+import { getDouble, getInt } from '../utils';
 
 const { DATE, INT, VARCHAR } = dataType;
 
@@ -53,6 +53,7 @@ interface Student {
   year: string;
   month: string;
   day: string;
+  monthName: string;
   dateKey: string;
 }
 
@@ -66,8 +67,10 @@ export function generateDemo(recordCount = 200) {
     { name: 'Month', type: VARCHAR },
     { name: 'Day', type: VARCHAR },
     { name: 'DateKey', type: VARCHAR },
+    { name: 'MonthName', type: VARCHAR },
     { name: 'Measure1', type: INT },
     { name: 'Measure2', type: INT },
+    { name: 'Measure3', type: INT },
   ];
 
   data += headers.map((header) => header.name).join(',');
@@ -95,6 +98,11 @@ export function generateDemo(recordCount = 200) {
   ];
   const years = ['2020', '2021', '2022'];
   const months = [
+    ['1', '2', '3'],
+    ['1'],
+    ['1', '2'],
+  ];
+  const monthNames = [
     ['January', 'February', 'March'],
     ['January'],
     ['January', 'February'],
@@ -129,6 +137,7 @@ export function generateDemo(recordCount = 200) {
       month: months[yearEnumAt][monthEnumAt],
       day: days[yearEnumAt][monthEnumAt][dayEnumAt],
       dateKey: `${years[yearEnumAt]}-${months[yearEnumAt][monthEnumAt]}-${days[yearEnumAt][monthEnumAt][dayEnumAt]}`,
+      monthName: monthNames[yearEnumAt][monthEnumAt],
     });
   }
 
@@ -141,8 +150,10 @@ export function generateDemo(recordCount = 200) {
       student.month,
       student.day,
       student.dateKey,
-      getInt({ min: 0, max: 100 }),
-      getInt({ min: 0, max: 100 }),
+      student.monthName,
+      getInt({ min: 0, max: 1000 }),
+      getInt({ min: 0, max: 10000 }),
+      getDouble({ min: 0, max: 100000, decimal: 9 }),
     ].join(',');
     data += `${record}\r\n`;
   }
