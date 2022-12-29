@@ -22,21 +22,24 @@ export function getTraveller(startTime: number) {
   const { vehicle, vehicleCost } = getVehicle(traveller, destination);
 
   const date = getDate(startTime);
-  return { ...traveller, ...destination, vehicle, vehicleCost, date };
+  return { ...traveller, ...destination, vehicle, vehicleCost, ...date };
 }
 
 export function getTravellers() {
   const travellers: TravellerLog[] = [];
+  for (let i = 0; i < 75374; i += 1) {
+    travellers.push(getTraveller(1601481600000));
+  }
   for (let i = 0; i < 35374; i += 1) {
     travellers.push(getTraveller(1601481600000));
   }
-  for (let i = 0; i < 25836; i += 1) {
+  for (let i = 0; i < 45836; i += 1) {
     travellers.push(getTraveller(1633017600000));
   }
-  for (let i = 0; i < 40246; i += 1) {
+  for (let i = 0; i < 50246; i += 1) {
     travellers.push(getTraveller(1664553600000));
   }
-  const headers = ['Name', 'Gender', 'Age', 'Local', 'Dest_City', 'Dest_Scenic', 'Dest_Cost', 'Vehicle', 'Vehicle_Cost', 'Date'].join(',');
+  const headers = ['Name', 'Gender', 'Age', 'Local', 'DestCity', 'DestScenic', 'DestCost', 'Vehicle', 'VehicleCost', 'DateKey', 'Year', 'Month', 'Day'].join(',');
   const data = travellers.map((record) => [
     record.name,
     record.gender,
@@ -47,7 +50,10 @@ export function getTravellers() {
     record.destCost,
     record.vehicle,
     record.vehicleCost,
-    record.date,
+    record.dateKey,
+    record.year,
+    record.month,
+    record.day,
   ].join(',')).join('\r\n');
   return `${headers}\r\n${data}`;
 }

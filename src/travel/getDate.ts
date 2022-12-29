@@ -28,5 +28,11 @@ export function getDate(startTime: number) {
     })(),
   });
   const time = day * 3600000 * 24;
-  return dayjs(startTime + time).format('YYYY-MM-DD');
+  const dayObj = dayjs(startTime + time);
+  return {
+    dateKey: dayObj.format('YYYY-MM-DD'),
+    year: dayObj.year(),
+    month: dayObj.month() + 1,
+    day: dayObj.date(),
+  };
 }

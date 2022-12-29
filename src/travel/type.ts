@@ -18,4 +18,11 @@ export interface VehicleLog {
   vehicleCost: number;
 }
 
-export type TravellerLog = Traveller & Destination & VehicleLog & { date: string };
+export interface Date {
+  dateKey: string;
+  year: number;
+  month: number;
+  day: number;
+}
+
+export type TravellerLog = Traveller & Destination & VehicleLog & Date;
