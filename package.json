@@ -7,6 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "tsc",
+    "debug": "npm run build && node --inspect-brk ./dist/index.js",
     "start": "npm run build && node ./dist/index.js"
   },
   "devDependencies": {

@@ -5,6 +5,7 @@ export interface Traveller {
   gender: Gender;
   age: number;
   local: boolean;
+  cost: number;
 }
 
 export interface Destination {

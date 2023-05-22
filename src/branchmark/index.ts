@@ -1,0 +1,1 @@
+export { getBranchmark } from './getBranchmark';
