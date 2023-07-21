@@ -1,0 +1,1 @@
+export { getMrr } from './getMrr';

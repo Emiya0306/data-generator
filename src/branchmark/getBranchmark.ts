@@ -8,8 +8,6 @@ interface GetBranchmarkArgs {
   measure: ValueOptions;
 }
 
-debugger;
-
 export function getBranchmark(args: GetBranchmarkArgs) {
   const { column, row, measure } = args;
 
